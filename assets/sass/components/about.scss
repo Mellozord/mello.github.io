@@ -1,0 +1,175 @@
+@use "sass:map";
+@use "../baseline/bootstrap";
+@use "../baseline/typography";
+@use "../baseline/functions";
+@use "../baseline/theme";
+
+section.about {
+  padding: functions.rem(105) functions.rem(20) functions.rem(250);
+
+  background-color: white;
+
+  width: 100%;
+
+  gap: functions.rem(35);
+
+  > span {
+    width: max(80%, functions.rem(300));
+
+    font-weight: 400;
+  }
+}
+
+.scrolling-topic {
+  width: 100%;
+
+  flex-flow: row;
+  flex-flow: nowrap;
+
+  justify-content: space-around;
+  align-items: flex-start;
+
+  gap: functions.rem(50);
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  > .topics {
+    justify-content: flex-end;
+
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    position: relative;
+
+    > .interactor {
+      position: absolute;
+      top: 0;
+
+      z-index: 2;
+
+      width: 100%;
+      height: calc((2.1rem + 14.4 * (100vw - 22.5rem) / 1560) * 1.2);
+
+      mix-blend-mode: color;
+      background-color: map.get(theme.$colors, main, black);
+    }
+
+    > .interactor:nth-of-type(2) {
+      z-index: 3;
+
+      mix-blend-mode: color-burn;
+      background-color: map.get(theme.$colors, main, black);
+    }
+
+    > .topics-container {
+      flex-flow: column;
+      align-items: flex-end;
+
+      font-weight: 600;
+      color: map.get(theme.$colors, main, warm);
+
+      max-height: 100%;
+
+      > .topic {
+        @include typography.font-inherit;
+
+        color: map.get(theme.$colors, main, warm);
+
+        text-shadow: 0px 0px functions.rem(2.5) rgba(0, 0, 0, 0.1);
+
+        justify-content: flex-end;
+
+        z-index: 1;
+      }
+    }
+  }
+
+  > .visual {
+    flex-flow: column;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    max-width: 55%;
+
+    height: 66vh;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    position: relative;
+
+    > .visual-container {
+      width: 100%;
+
+      gap: functions.rem(25);
+
+      flex-flow: column;
+
+      cursor: grab;
+
+      > div {
+        width: 100%;
+
+        user-select: none;
+
+        > img {
+          height: functions.rem(500);
+          aspect-ratio: 16 / 9;
+
+          border: functions.rem(4) solid map.get(theme.$colors, main, black);
+
+          border-radius: functions.rem(9);
+
+          cursor: pointer;
+
+          -webkit-user-drag: none;
+        }
+      }
+    }
+  }
+}
+
+section.design {
+  padding: functions.rem(50) functions.rem(20) functions.rem(250);
+
+  background-color: white;
+
+  width: 100%;
+}
+
+section.twitch {
+  padding: functions.rem(50) functions.rem(20) functions.rem(250);
+
+  background-color: white;
+
+  width: 100%;
+
+  .scrolling-topic > .visual {
+    flex-flow: column;
+
+    > .visual-container {
+      gap: functions.rem(15);
+
+      > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: functions.rem(15);
+
+        > img {
+          width: functions.rem(100%);
+          height: auto;
+
+          aspect-ratio: 1/1;
+
+          border: functions.rem(4) solid map.get(theme.$colors, main, black);
+
+          border-radius: functions.rem(9);
+        }
+      }
+    }
+  }
+}

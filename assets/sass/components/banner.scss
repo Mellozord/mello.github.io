@@ -1,0 +1,151 @@
+@use "sass:map";
+@use "../baseline/bootstrap";
+@use "../baseline/typography";
+@use "../baseline/functions";
+@use "../baseline/theme";
+
+section.banner {
+  z-index: 1;
+
+  height: 50vh;
+  width: 100%;
+
+  position: relative;
+
+  > .banner-mask {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+
+    background-image: url("../img/banner3.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+  }
+
+  > .banner-inner {
+    background-image: url("../img/banner3.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 100%;
+    width: 100%;
+
+    filter: blur(8px);
+
+    z-index: 2;
+  }
+
+  position: relative;
+
+  align-items: flex-start;
+
+  // padding: functions.rem(25) functions.rem(50);
+
+  overflow: hidden;
+
+  > .banner-inner {
+    > .title {
+      color: white;
+
+      > span {
+        @include typography.font-inherit;
+
+        > .inner {
+          @include typography.font-inherit;
+
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  > .banner-fade {
+    z-index: 2;
+
+    position: absolute;
+    bottom: functions.rem(0);
+
+    height: 75%;
+    width: 165%;
+
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
+
+    filter: blur(5px) brightness(2) saturate(2) contrast(2);
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 33%,
+      rgba(23, 25, 27, 1) 100%
+    );
+  }
+}
+
+section.post-banner {
+  width: 100%;
+  height: min(functions.rem(66), 10vh);
+
+  background-color: map.get(theme.$colors, main, black);
+
+  padding: functions.rem(0) functions.rem(55) functions.rem(0) functions.rem(35);
+
+  position: relative;
+
+  gap: functions.rem(20);
+
+  flex-flow: row;
+  flex-wrap: nowrap;
+
+  justify-content: space-around;
+
+  .logo {
+    z-index: 2;
+
+    height: 0;
+    min-width: functions.rem(192);
+
+    overflow: visible;
+
+    position: relative;
+
+    > .logo-wrapper {
+      border: functions.rem(5) solid map.get(theme.$colors, main, black);
+      border-radius: 50%;
+
+      overflow: hidden;
+
+      position: absolute;
+
+      height: functions.rem(192);
+      width: functions.rem(192);
+
+      > img {
+        height: 100%;
+        width: 100%;
+
+        position: absolute;
+
+        z-index: 2;
+      }
+    }
+  }
+
+  .text {
+    color: map.get(theme.$colors, main, warm);
+
+    font-weight: 700;
+
+    // white-space: nowrap;
+
+    // flex-shrink: 0;
+  }
+
+  @media (max-width: 1000px) {
+
+  }
+}

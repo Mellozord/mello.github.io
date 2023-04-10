@@ -1,0 +1,142 @@
+@use "sass:map";
+@use "functions";
+@use "theme";
+
+.pagination-default-out {
+  opacity: 0;
+
+  animation-name: paginationDefaultOut;
+  animation-delay: 0ms;
+  animation-duration: 250ms;
+  animation-timing-function: linear;
+}
+
+.pagination-default-in {
+  opacity: 1;
+
+  animation-name: paginationDefaultIn;
+  animation-delay: 0ms;
+  animation-duration: 250ms;
+  animation-timing-function: linear;
+}
+
+@keyframes paginationDefaultIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes paginationDefaultOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@mixin basic-skeleton {
+  background: linear-gradient(
+    90deg,
+    darken(white, 15%) 0% 33%,
+    white 48% 52%,
+    darken(white, 15%) 66% 100%
+  );
+  background-size: 200%;
+  background-position: center;
+
+  background-position: 95% 0%;
+  color: transparent !important;
+
+  z-index: 5 !important;
+
+  * {
+    color: transparent !important;
+    background-color: transparent !important;
+
+    z-index: -1 !important;
+  }
+
+  animation-name: basic-skeleton;
+  animation-delay: 0ms;
+  animation-duration: 1500ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  @keyframes basic-skeleton {
+    0% {
+      background-position: 100% 0%;
+    }
+
+    100% {
+      background-position: -100% 0%;
+    }
+  }
+}
+
+@mixin basic-fadein {
+  opacity: 1;
+
+  animation-name: basic-fadein;
+  animation-delay: 0ms;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+
+  @keyframes basic-fadein {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.basic-fadein {
+  @include basic-fadein;
+}
+
+@mixin basic-fadeout {
+  opacity: 0;
+
+  animation-name: basic-fadeout;
+  animation-delay: 0ms;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+
+  @keyframes basic-fadeout {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}
+.basic-fadeout {
+  @include basic-fadeout;
+}
+
+// TABLE ANIMATIONS
+@keyframes expander {
+  0% {
+    opacity: 0;
+    max-height: functions.rem(0);
+  }
+
+  50% {
+    opacity: 0;
+    max-height: functions.rem(120);
+  }
+
+  100% {
+    opacity: 1;
+    max-height: functions.rem(120);
+  }
+}

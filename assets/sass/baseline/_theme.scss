@@ -1,0 +1,47 @@
+$colors: (
+  main: (
+    black: rgb(16, 16, 16),
+    grey: rgb(240, 240, 240),
+    darkgrey: rgba(240, 240, 240, 0.502),
+    white: rgb(255, 255, 255),
+    primary: rgb(70, 104, 85),
+    blue: rgb(51, 102, 153),
+    warm: rgb(255, 204, 128),
+    mellogreen: rgb(86, 119, 79),
+  ),
+);
+
+$fonts: (
+  max: 80,
+  min: 56,
+  sizes: (
+    h1: 1,
+    h2: 0.60,
+    h3: 0.425,
+    h4: 0.35,
+    h5: 0.30,
+    h6: 0.20,
+  ),
+  lines: (
+    h1: 1,
+    h2: 1.2,
+    h3: 1,
+    h4: 1.1,
+    h5: 1.25,
+    h6: 1.25,
+  ),
+  spacings: (
+    h1max: 0.25,
+    h1min: -0.25,
+    h2max: 0.2,
+    h2min: -0.2,
+    h3max: 0.15,
+    h3min: -0.15,
+    h4max: 0.1,
+    h4min: -0.1,
+    h5max: 0.05,
+    h5min: -0.05,
+    h6max: 0.05,
+    h6min: -0.05,
+  ),
+);

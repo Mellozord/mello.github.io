@@ -1,0 +1,68 @@
+// Baseline
+@use "sass:map";
+@use "baseline/bootstrap";
+// @use "baseline/icons";
+@use "baseline/animations";
+@use "baseline/typography";
+@use "baseline/functions";
+@use "baseline/theme";
+
+@use "pages/home";
+
+main {
+  width: 100%;
+
+  overflow: hidden;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .content-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    overflow: hidden;
+
+    position: relative;
+
+    .border-element {
+      position: fixed;
+
+      top: functions.rem(0);
+      left: functions.rem(15);
+
+      z-index: 5;
+
+      width: calc(100% - functions.rem(75));
+      height: calc(100vh - functions.rem(40));
+
+      pointer-events: none;
+
+      .border {
+        position: fixed;
+
+        width: inherit;
+        height: inherit;
+        border: functions.rem(3) solid map.get(theme.$colors, main, black);
+        border-radius: functions.rem(15) functions.rem(15) functions.rem(15) functions.rem(15);
+
+        outline: functions.rem(75) solid
+          map.get(theme.$colors, main, mellogreen);
+
+        top: functions.rem(15);
+
+        z-index: 2;
+      }
+
+      @media (max-width: 1000px) {
+        width: calc(100% - functions.rem(30));
+        height: calc(100vh - functions.rem(120));
+
+        .border {
+          top: functions.rem(55);
+        }
+      }
+    }
+  }
+}

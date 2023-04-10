@@ -1,0 +1,110 @@
+@use "sass:map";
+@use "../baseline/bootstrap";
+@use "../baseline/typography";
+@use "../baseline/functions";
+@use "../baseline/theme";
+
+.carousel {
+  overflow: hidden;
+
+  align-items: flex-start;
+  flex-flow: column;
+
+  padding: functions.rem(25) functions.rem(15);
+
+  > .description {
+    z-index: 2;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    width: 100%;
+
+    height: functions.rem(80);
+
+    position: relative;
+
+    > .text {
+      background-color: map.get(theme.$colors, main, black);
+      z-index: 2;
+
+      padding: functions.rem(5) functions.rem(15);
+
+      text-transform: lowercase;
+    }
+
+    > .line {
+      height: functions.rem(2);
+      width: 115%;
+
+      transform: translateY(functions.rem(4));
+
+      background: linear-gradient(
+        to right,
+        transparent,
+        map.get(theme.$colors, main, primary),
+        transparent
+      );
+      // background-color: map.get(theme.$colors, main, primary);
+
+      position: absolute;
+    }
+  }
+
+  > .container {
+    z-index: 1;
+
+    overflow: hidden;
+    width: auto;
+
+    padding: functions.rem(0) functions.rem(15);
+
+    user-select: none;
+
+    gap: functions.rem(33);
+
+    * {
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    > .inner {
+      max-width: 100%;
+      width: 100%;
+
+      overflow: visible;
+
+      flex-wrap: nowrap;
+
+      gap: functions.rem(33);
+
+      > .block {
+        flex-grow: 1;
+        flex-shrink: 0;
+
+        overflow: hidden;
+
+        border-radius: functions.rem(11);
+
+        > img {
+          width: functions.rem(512);
+          aspect-ratio: 16/9;
+        }
+      }
+    }
+  }
+}
+
+.emote-wall {
+  .carousel {
+    > .container {
+      > .inner {
+        > .block {
+          > img {
+            width: functions.rem(300);
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+    }
+  }
+}

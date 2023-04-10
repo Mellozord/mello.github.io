@@ -1,0 +1,17 @@
+@function golden($number) {
+  @return calc($number * 1.618);
+}
+
+@function goldenPx($value) {
+  @return golden(calc($value / 16)) + rem;
+}
+
+@function rem($value) {
+  $remValue: calc($value / 16) + rem;
+  @return $remValue;
+}
+
+@function rem2($value) {
+  $remValue: calc($value / 16);
+  @return $remValue;
+}

@@ -1,0 +1,149 @@
+@use "sass:map";
+@use "theme";
+@use "functions";
+
+// @use "../components/buttons";
+// @use "../components/inputs";
+// @use "../components/filters";
+// @use "../components/containers";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+head,
+script,
+style,
+includings,
+stylings {
+  display: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+html {
+  overflow-x: hidden;
+
+  min-height: 100vh;
+}
+
+body {
+  overflow-x: hidden;
+  height: auto;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column;
+
+  background-color: map.get(theme.$colors, main, mellogreen);
+
+  > scroller {
+    max-height: 100vh;
+  }
+}
+
+main {
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  flex-flow: column;
+
+  max-width: 100%;
+
+  height: inherit;
+
+  min-width: inherit;
+
+  overflow-x: hidden;
+}
+
+section {
+  max-width: 100%;
+}
+
+footer {
+  min-height: clamp(functions.rem(300), 33vh, functions.rem(600));
+  width: 100%;
+
+  padding: functions.rem(50) 0 functions.rem(75);
+
+  > container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(functions.rem(350), 1fr));
+
+    gap: functions.rem(20);
+
+    @media (max-width: functions.rem(600)) {
+      gap: functions.rem(50);
+    }
+
+    > div {
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-flow: column;
+    }
+
+    > div:nth-child(1) {
+      > img {
+        max-width: functions.rem(150);
+        margin-bottom: functions.rem(20);
+      }
+
+      > p {
+        margin-top: functions.rem(10);
+      }
+    }
+
+    > div:nth-child(2) {
+      > h3 {
+        margin-bottom: functions.rem(20);
+      }
+
+      > input-container-with-button {
+        max-width: 90%;
+        margin-top: functions.rem(10);
+      }
+
+      > p {
+        margin-top: functions.rem(10);
+      }
+    }
+  }
+}
+
+content-holder {
+  min-height: inherit;
+  height: 100%;
+  min-width: 100%;
+
+  > wrapper {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+
+    min-height: inherit;
+    height: 100%;
+    width: 100%;
+
+    > * {
+      width: 100%;
+    }
+  }
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}

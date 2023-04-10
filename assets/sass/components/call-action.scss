@@ -1,0 +1,57 @@
+@use "sass:map";
+@use "../baseline/bootstrap";
+@use "../baseline/typography";
+@use "../baseline/functions";
+@use "../baseline/theme";
+
+.call-to-action {
+  position: fixed;
+  bottom: functions.rem(55);
+
+  color: map.get(theme.$colors, main, warm);
+  background-color: white;
+
+  padding: functions.rem(5) functions.rem(20);
+
+  border: functions.rem(3) solid map.get(theme.$colors, main, black);
+  border-radius: functions.rem(15);
+
+  font-weight: 700;
+
+  z-index: 5;
+
+  height: functions.rem(45);
+
+  transition: 125ms ease-in-out;
+
+  > span {
+    @include typography.font-inherit;
+
+    > i {
+      margin-left: functions.rem(15);
+      font-style: normal;
+
+      @include typography.font-inherit;
+    }
+  }
+
+  &.active {
+    padding: functions.rem(5);
+    border-radius: 50%;
+
+    height: functions.rem(45);
+    width: functions.rem(45);
+
+    .text {
+      display: none;
+    }
+
+    > span > i {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    bottom: functions.rem(80);
+  }
+}

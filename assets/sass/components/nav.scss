@@ -1,0 +1,135 @@
+@use "sass:map";
+@use "../baseline/bootstrap";
+@use "../baseline/typography";
+@use "../baseline/functions";
+@use "../baseline/theme";
+
+.around {
+  flex-flow: row;
+  flex-wrap: nowrap;
+
+  width: 100%;
+  
+  padding: functions.rem(15) functions.rem(40) functions.rem(15) functions.rem(15);
+  overflow: hidden;
+
+  border-radius: functions.rem(15) functions.rem(15) 0 0;
+
+  @media (max-width: 1000px) {
+    padding: functions.rem(15);
+  }
+}
+
+.nav {
+  order: 2;
+
+  position: fixed;
+  right: functions.rem(10);
+  top: 0;
+
+  height: 100vh;
+  width: functions.rem(40);
+
+  flex-flow: column;
+
+  padding: functions.rem(20) functions.rem(0);
+
+  z-index: 6;
+
+  background-color: map.get(theme.$colors, main, mellogreen);
+  background-color: transparent;
+
+  > span {
+    rotate: 90deg;
+
+    color: map.get(theme.$colors, main, warm);
+
+    font-weight: 600;
+
+    flex-grow: 1;
+  }
+
+  > .img-holder {
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    rotate: unset;
+
+    height: functions.rem(40);
+  }
+
+  @media (max-width: 1000px) {
+    right: 0;
+    top: unset;
+    bottom: 0;
+
+    width: 100%;
+    height: functions.rem(70);
+
+    flex-flow: row;
+
+    > span {
+      rotate: unset;
+    }
+
+    > .img-holder {
+      display: none;
+    }
+  }
+}
+
+.mobile-nav {
+  display: none;
+  top: 0;
+  left: 0;
+  position: fixed;
+
+  width: 100%;
+  height: functions.rem(55);
+
+  z-index: 6;
+
+  background-color: map.get(theme.$colors, main, mellogreen);
+  // background-color: transparent;
+
+  > .img-holder {
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    rotate: unset;
+
+    height: functions.rem(42);
+
+    > img {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    display: flex;
+  }
+}
+
+.small-nav {
+  background: rgb(16, 16, 16, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  position: fixed;
+  bottom: functions.rem(0);
+  z-index: 3;
+
+  width: 100%;
+  height: min(10vh, functions.rem(60));
+
+  gap: functions.rem(10);
+
+  color: white;
+
+  > span {
+    @include typography.font-inherit;
+
+    width: functions.rem(100);
+  }
+}

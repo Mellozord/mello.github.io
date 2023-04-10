@@ -1,0 +1,305 @@
+@use "sass:map";
+@use "functions";
+@use "theme";
+// @use "icons";
+
+@font-face {
+  font-family: "ABCGinto";
+  src: url("../typography/ABCGintoNordVariable-Trial.ttf") format("truetype");
+}
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Thin.ttf") format("truetype");
+//   font-weight: 100;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-ThinItalic.ttf") format("truetype");
+//   font-weight: 100;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-ExtraLight.ttf") format("truetype");
+//   font-weight: 200;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-ExtraLight.ttf") format("truetype");
+//   font-weight: 200;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Light.ttf") format("truetype");
+//   font-weight: 300;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-LightItalic.ttf") format("truetype");
+//   font-weight: 300;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Regular.ttf") format("truetype");
+//   font-weight: 400;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Italic.ttf") format("truetype");
+//   font-weight: 400;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Medium.ttf") format("truetype");
+//   font-weight: 500;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-MediumItalic.ttf") format("truetype");
+//   font-weight: 500;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-SemiBold.ttf") format("truetype");
+//   font-weight: 600;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-SemiBoldItalic.ttf")
+//     format("truetype");
+//   font-weight: 600;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Bold.ttf") format("truetype");
+//   font-weight: 700;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-BoldItalic.ttf") format("truetype");
+//   font-weight: 700;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-ExtraBold.ttf") format("truetype");
+//   font-weight: 800;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-ExtraBoldtalic.ttf")
+//     format("truetype");
+//   font-weight: 800;
+//   font-style: italic;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Black.ttf") format("truetype");
+//   font-size: 900;
+// }
+// @font-face {
+//   font-family: "Poppins";
+//   src: url("../typography/Poppins/Poppins-Blacktalic.ttf") format("truetype");
+//   font-weight: 900;
+//   font-style: italic;
+// }
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  font-size: $min-font-size + rem;
+  @media (max-width: 1920px) {
+    font-size: calc(
+      #{$min-font-size} + #{$max-font-size - $min-font-size} *
+        ((100vw - #{$min-vw}) / #{$max-vw - $min-vw})
+    );
+  }
+}
+
+html {
+  font-size: 16px;
+
+  // 4k Support
+  @media (min-width: 1920px) {
+    font-size: 0.8333vw;
+  }
+
+  font-weight: 300;
+}
+
+body {
+  font-family: "ABCGinto", sans-serif;
+}
+
+@mixin fluid($min, $max, $height: 0.8, $space-min: 0, $space-max: 0) {
+  $fluid: calc(
+    functions.rem($min) + ($max - $min) *
+      ((100vw - functions.rem(360)) / (1920 - 360))
+  );
+  font-size: $fluid;
+  line-height: calc($fluid * $height);
+
+  letter-spacing: calc(
+    functions.rem($space-min) + ($space-max - $space-min) *
+      ((100vw - functions.rem(360)) / (1920 - 360))
+  );
+}
+
+@mixin font-inherit {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-weight: inherit;
+}
+
+highlight {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+
+  color: map.get(theme.$colors, main, primary);
+}
+
+highlight-darker {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+
+  color: darken(map.get(theme.$colors, main, primary), 13%);
+}
+
+$maxf: map.get(theme.$fonts, max);
+$minf: map.get(theme.$fonts, min);
+$sizes: map.get(theme.$fonts, sizes);
+$lines: map.get(theme.$fonts, lines);
+$spacings: map.get(theme.$fonts, spacings);
+
+h1,
+.h1 {
+  font-family: "ABCGinto", sans-serif;
+
+  font-size: functions.rem($minf);
+  line-height: calc(functions.rem($minf) * map.get($lines, h1));
+  letter-spacing: functions.rem(map.get($spacings, h1min));
+
+  $first: calc($minf * map.get($sizes, h1));
+  $second: calc($maxf * map.get($sizes, h1));
+
+  @include fluid(
+    $first,
+    $second,
+    map.get($lines, h1),
+    map.get($spacings, h1min),
+    map.get($spacings, h1max)
+  );
+}
+
+h2,
+.h2 {
+  font-family: "ABCGinto", sans-serif;
+
+  font-size: calc(functions.rem($minf) * map.get($sizes, h2));
+  line-height: calc(functions.rem($minf) * map.get($lines, h2));
+  letter-spacing: functions.rem(map.get($spacings, h2min));
+
+  $first: calc($minf * map.get($sizes, h2));
+  $second: calc($maxf * map.get($sizes, h2));
+
+  @include fluid(
+    $first,
+    $second,
+    map.get($lines, h2),
+    map.get($spacings, h2min),
+    map.get($spacings, h2max)
+  );
+}
+
+h3,
+.h3 {
+  font-family: "ABCGinto", sans-serif;
+
+  font-size: calc(functions.rem($minf) * map.get($sizes, h3));
+  line-height: calc(functions.rem($minf) * map.get($lines, h3));
+  letter-spacing: functions.rem(map.get($spacings, h3min));
+
+  $first: calc($minf * map.get($sizes, h3));
+  $second: calc($maxf * map.get($sizes, h3));
+
+  @include fluid(
+    $first,
+    $second,
+    map.get($lines, h3),
+    map.get($spacings, h3min),
+    map.get($spacings, h3max)
+  );
+}
+
+h4,
+.h4 {
+  font-family: "ABCGinto", sans-serif;
+
+  font-size: calc(functions.rem($minf) * map.get($sizes, h4));
+  line-height: calc(functions.rem($minf) * map.get($lines, h4));
+  letter-spacing: functions.rem(map.get($spacings, h4min));
+
+  $first: calc($minf * map.get($sizes, h4));
+  $second: calc($maxf * map.get($sizes, h4));
+
+  @include fluid(
+    $first,
+    $second,
+    map.get($lines, h4),
+    map.get($spacings, h4min),
+    map.get($spacings, h4max)
+  );
+}
+
+h5,
+.h5,
+p,
+span {
+  font-family: "ABCGinto", sans-serif;
+
+  font-size: calc(functions.rem($minf) * map.get($sizes, h5));
+  line-height: calc(functions.rem($minf) * map.get($lines, h5));
+  letter-spacing: functions.rem(map.get($spacings, h5min));
+
+  $first: calc($minf * map.get($sizes, h5));
+  $second: calc($maxf * map.get($sizes, h5));
+
+  @include fluid(
+    $first,
+    $second,
+    map.get($lines, h5),
+    map.get($spacings, h5min),
+    map.get($spacings, h5max)
+  );
+}
+
+h6,
+.h6,
+small {
+  font-family: "ABCGinto", sans-serif;
+
+  font-size: calc(functions.rem($minf) * map.get($sizes, h6));
+  line-height: calc(functions.rem($minf) * map.get($lines, h6));
+  letter-spacing: functions.rem(map.get($spacings, h6min));
+
+  $first: calc($minf * map.get($sizes, h6));
+  $second: calc($maxf * map.get($sizes, h6));
+
+  @include fluid(
+    $first,
+    $second,
+    map.get($lines, h6),
+    map.get($spacings, h6min),
+    map.get($spacings, h6max)
+  );
+}
