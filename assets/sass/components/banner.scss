@@ -88,7 +88,7 @@ section.banner {
 
 section.post-banner {
   width: 100%;
-  height: min(functions.rem(66), 10vh);
+  min-height: max(functions.rem(120), 10vh);
 
   background-color: map.get(theme.$colors, main, black);
 
@@ -126,7 +126,6 @@ section.post-banner {
 
       > img {
         height: 100%;
-        width: 100%;
 
         position: absolute;
 
@@ -146,6 +145,15 @@ section.post-banner {
   }
 
   @media (max-width: 1000px) {
+    .logo {
+      min-width: max(functions.rem(120), 10vh);
 
+      > .logo-wrapper {
+        border: functions.rem(3) solid map.get(theme.$colors, main, black);
+
+        height: max(functions.rem(110), 10vh);
+        width: max(functions.rem(110), 10vh);
+      }
+    }
   }
 }

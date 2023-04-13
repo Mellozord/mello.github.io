@@ -4,11 +4,56 @@
 @use "../baseline/functions";
 @use "../baseline/theme";
 
+.main-content {
+  width: 100%;
+  position: relative;
+
+  > section {
+    padding: functions.rem(60) functions.rem(25) functions.rem(40)
+      functions.rem(40);
+
+    background-color: map.get(theme.$colors, main, grey);
+
+    width: 100%;
+  }
+}
+
+.section-indication {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: functions.rem(45);
+  height: 100%;
+
+  z-index: 4;
+  // background-color: black;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding: functions.rem(15);
+
+  > .text {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    justify-content: flex-start;
+
+    width: 100%;
+
+    rotate: 90deg;
+
+    color: white;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+  }
+}
+
 section.about {
-  padding: functions.rem(105) functions.rem(20) functions.rem(250);
-
-  background-color: white;
-
   width: 100%;
 
   gap: functions.rem(35);
@@ -26,7 +71,7 @@ section.about {
   flex-flow: row;
   flex-flow: nowrap;
 
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: flex-start;
 
   gap: functions.rem(50);
@@ -42,6 +87,8 @@ section.about {
     flex-shrink: 0;
 
     position: relative;
+
+    width: max(55%, functions.rem(400));
 
     > .interactor {
       position: absolute;
@@ -92,7 +139,7 @@ section.about {
     flex-grow: 1;
     flex-shrink: 1;
 
-    max-width: 55%;
+    width: max(45%, functions.rem(400));
 
     height: 66vh;
 
@@ -102,8 +149,6 @@ section.about {
     position: relative;
 
     > .visual-container {
-      width: 100%;
-
       gap: functions.rem(25);
 
       flex-flow: column;
@@ -111,15 +156,13 @@ section.about {
       cursor: grab;
 
       > div {
-        width: 100%;
-
         user-select: none;
 
         > img {
-          height: functions.rem(500);
+          width: functions.rem(500);
           aspect-ratio: 16 / 9;
 
-          border: functions.rem(4) solid map.get(theme.$colors, main, black);
+          border: functions.rem(2) solid map.get(theme.$colors, main, black);
 
           border-radius: functions.rem(9);
 
@@ -132,21 +175,7 @@ section.about {
   }
 }
 
-section.design {
-  padding: functions.rem(50) functions.rem(20) functions.rem(250);
-
-  background-color: white;
-
-  width: 100%;
-}
-
 section.twitch {
-  padding: functions.rem(50) functions.rem(20) functions.rem(250);
-
-  background-color: white;
-
-  width: 100%;
-
   .scrolling-topic > .visual {
     flex-flow: column;
 
